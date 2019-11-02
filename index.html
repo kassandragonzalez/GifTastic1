@@ -24,7 +24,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
 
-    var topics = ['coffee', 'pumpkin', 'autumn', 'cozy'];
+    var topics = ['coffee', 'pumpkin-spice', 'autumn', 'cozy'];
+
+    function displayGif(){
+        var queryURL=arguments;
+        $.ajax({ "https://api.giphy.com/v1/gifs/search?q=" + giphy + "&api_key=2IFKnhwOT7ZioBu9Zi6f9W8SKGLuW8Wy";
+            url:queryURL,
+            method: "GET"
+        }).then(function(response){
+            var results = response.data;
+            for (var i = 0; i < results.length;i++){
+                var gifDiv = $('<div'); 
+                var rating = results[i].rating;
+                var p = $('<p>').text('Rating: ' + rating);
+                var topicImage = $('<img>');
+                topicImage.attr('src' , results[i].images.fixed_height.url);
+                gifDiv.prepend(p);
+                gifDiv.prepend(topicImage);
+                $('#gifs-view').prepend(gifDiv);
+                console.log(response);
+            }
+        });
+    }
     
     
     
