@@ -27,8 +27,8 @@
     var topics = ['coffee', 'pumpkin-spice', 'autumn', 'cozy'];
 
     function displayGif(){
-        var queryURL=arguments;
-        $.ajax({ "https://api.giphy.com/v1/gifs/search?q=" + giphy + "&api_key=2IFKnhwOT7ZioBu9Zi6f9W8SKGLuW8Wy";
+        var queryURL= "https://api.giphy.com/v1/gifs/search?q=" + giphy + "&api_key=2IFKnhwOT7ZioBu9Zi6f9W8SKGLuW8Wy";
+        $.ajax({ 
             url:queryURL,
             method: "GET"
         }).then(function(response){
